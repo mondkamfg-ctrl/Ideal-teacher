@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مثالی استاد | Ideal Teacher</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#f4f7fb;color:#172033;line-height:1.8}
+header{background:#0F3D2E;color:white;padding:25px;text-align:center}
+header h1{font-size:28px}
+.tabs{display:flex;justify-content:center;gap:10px;margin-top:15px}
+.tabs button{padding:8px 18px;border:none;border-radius:20px;cursor:pointer;background:#8FA678;color:white}
+.tabs button.active{background:white;color:#0F3D2E;font-weight:bold}
+.section{padding:20px;display:block}
+.hidden{display:none !important}
+.card{background:white;padding:15px;margin:12px 0;border-radius:12px;box-shadow:0 2px 8px #0001;border-right:5px solid #0F3D2E}
+input{width:100%;padding:12px;border-radius:10px;border:1px solid #ccc;margin:10px 0}
+.btn{background:#0F3D2E;color:white;border:none;padding:10px 20px;border-radius:10px;cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+<h1>📚 مثالی استاد</h1>
+<p>بہترین استاد بننے کی مکمل رہنمائی</p>
+<div class="tabs">
+<button onclick="showTab('guides')" id="b1" class="active">گائیڈز</button>
+<button onclick="showTab('tools')" id="b2">ٹولز</button>
+<button onclick="showTab('about')" id="b3">تعارف</button>
+</div>
+</header>
+
+<div id="guides" class="section">
+<div id="list"></div>
+</div>
+
+<div id="tools" class="section hidden">
+<div class="card">
+<h3>1. پیریڈ پلانر (40 منٹ)</h3>
+<input id="topic" placeholder="آج کا سبق لکھیں مثلاً: وضو">
+<button class="btn" onclick="makePlan()">پلان بنائیں</button>
+<div id="plan" style="margin-top:10px"></div>
+</div>
+<div class="card"><h3>2. کلاس کی دعائیں</h3><p>رَبِّ زِدْنِي عِلْمًا - سُبْحَانَكَ لَا عِلْمَ لَنَا</p></div>
+</div>
+
+<div id="about" class="section hidden">
+<div class="card"><h3>Online Academy 03142028572</h3><p>یہ ایپ اساتذہ کی تربیت کے لیے ہے تاکہ وہ دنیا و آخرت میں بہترین استاد بنیں۔</p></div>
+</div>
+
+<script>
+const guides=[
+"1. نیت کی اصلاح: پڑھانا عبادت ہے",
+"2. کلاس کنٹرول: محبت اور سختی کا توازن",
+"3. سبق کی تیاری: مکمل تیاری سے آنا",
+"4. شفقت: بچے کی اصلاح پر نظر",
+"5. سوال کا طریقہ: ہر بچے سے سوال",
+"6. دہرائی: پرانے سبق کی دہرائی",
+"7. نظم و ضبط: وقت کی پابندی",
+"8. والدین سے رابطہ: ہفتہ وار رپورٹ",
+"9. اپنا اخلاق: استاد کا کردار ہی نصاب ہے",
+"10. جدید ٹیکنالوجی کا استعمال",
+"11. کمزور بچے پر زیادہ توجہ",
+"12. انعام: روز ایک بچے کی تعریف",
+"13. دعا سے کلاس شروع و ختم",
+"14. خود احتسابی: روز اپنا جائزہ",
+"15. آخرت کا استاد: ایسا پڑھاؤ کہ بچہ قیامت میں گواہ بنے"
+];
+let h="";guides.forEach(g=>{h+=`<div class="card">${g}</div>`});document.getElementById("list").innerHTML=h;
+function showTab(id){document.querySelectorAll('.section').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));document.getElementById(id=='guides'?'b1':id=='tools'?'b2':'b3').classList.add('active');}
+function makePlan(){let t=document.getElementById("topic").value||"آج کا سبق";document.getElementById("plan").innerHTML=`<b>${t} کا پلان:</b><br>0-5 منٹ: دعا اور دہرائی<br>5-25 منٹ: نیا سبق<br>25-35 منٹ: مشق<br>35-40 منٹ: خلاصہ`;}
+</script>
+</body>
+</html>
