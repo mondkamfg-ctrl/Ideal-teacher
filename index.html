@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ustad Nama - مثالی استاد</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial}
+body{background:#eef2e8;color:#1a2e1a;line-height:2}
+header{background:#0F3D2E;color:white;padding:30px 20px;text-align:center;border-radius:0 0 30px 30px}
+.tabs{display:flex;justify-content:center;gap:10px;margin-top:15px}
+.tabs button{padding:10px 22px;border:none;border-radius:25px;background:#8FA678;color:white;cursor:pointer}
+.tabs button.active{background:white;color:#0F3D2E}
+.section{padding:18px;max-width:700px;margin:auto}
+.hidden{display:none!important}
+.card{background:white;padding:18px;margin:14px 0;border-radius:18px;box-shadow:0 4px 15px #0001;border-right:6px solid #0F3D2E;cursor:pointer}
+.card .detail{display:none;margin-top:10px;border-top:1px dashed #ccc;padding-top:10px}
+.card.open .detail{display:block}
+.badge{background:#0F3D2E;color:white;padding:2px 10px;border-radius:10px;font-size:12px;margin-left:8px}
+input{width:100%;padding:14px;border-radius:12px;border:1px solid #ccc;margin:10px 0}
+.btn{background:#0F3D2E;color:white;border:none;padding:12px;border-radius:12px;width:100%}
+</style>
+</head>
+<body>
+<header>
+<h1>📚 استاد نامہ</h1>
+<p>Online Academy 03142028572</p>
+<div class="tabs">
+<button id="b1" class="active" onclick="showTab('guides')">گائیڈز</button>
+<button id="b2" onclick="showTab('tools')">ٹولز</button>
+<button id="b3" onclick="showTab('about')">تعارف</button>
+</div>
+</header>
+<div id="guides" class="section"><div id="list"></div></div>
+<div id="tools" class="section hidden">
+<div class="card"><h3>پیریڈ پلانر</h3><input id="topic" placeholder="موضوع لکھیں"><button class="btn" onclick="makePlan()">پلان بنائیں</button><div id="plan" style="margin-top:10px"></div></div>
+</div>
+<div id="about" class="section hidden"><div class="card"><h3>Online Academy 03142028572</h3><p>یہ ایپ اساتذہ کے لیے تحفہ ہے۔</p></div></div>
+<script>
+const data=[
+"1. نیت کی اصلاح: ہر کلاس سے پہلے اللہ کی رضا کی نیت",
+"2. کلاس کنٹرول: پہلے پیار، پھر تنبیہ",
+"3. سبق کی تیاری: 3 حصوں میں تیاری",
+"4. شفقت: عمل کو برا کہیں، بچے کو نہیں",
+"5. سوال کا طریقہ: ہر بچہ روز بولے",
+"6. دہرائی: پہلے 5 منٹ پچھلا سبق",
+"7. نظم و ضبط: استاد وقت کا پابند",
+"8. والدین سے رابطہ: ہفتہ وار رپورٹ",
+"9. اپنا اخلاق: کردار ہی نصاب ہے",
+"10. ٹیکنالوجی: ویڈیو اور واٹس ایپ",
+"11. کمزور بچے: الگ 5 منٹ توجہ",
+"12. انعام: روز ایک ستارہ",
+"13. دعا: دعا سے آغاز و اختتام",
+"14. خود احتسابی: رات کو جائزہ",
+"15. آخرت کا استاد: قیامت میں گواہ بنے"
+];
+let h="";data.forEach((g,i)=>{h+=`<div class="card" onclick="this.classList.toggle('open')"><h3><span class="badge">${i+1}</span> ${g}</h3><div class="detail">اس نکتے پر عمل کرنے سے آپ مثالی استاد بنیں گے، ان شاء اللہ۔ اس کو روز ایک بار دہرائیں اور کلاس میں نافذ کریں۔</div></div>`});document.getElementById("list").innerHTML=h;
+function showTab(id){document.querySelectorAll('.section').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));document.getElementById(id=='guides'?'b1':id=='tools'?'b2':'b3').classList.add('active')}
+function makePlan(){let t=document.getElementById("topic").value||"آج کا سبق";document.getElementById("plan").innerHTML=`موضوع: ${t}<br>0-5 دعا+دہرائی<br>5-25 نیا سبق<br>25-35 مشق<br>35-40 خلاصہ`}
+</script>
+</body>
+</html>
